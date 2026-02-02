@@ -1,78 +1,44 @@
-# Health Plus
+# Albright Clinic - Mental Health & Behavioral Services
 
-Welcome to the Health Plus project repository! This is a React-based website aimed at providing accessible and personalized healthcare services to users. The website allows users to connect with expert doctors, schedule appointments, and receive expert medical advice.
+Welcome to the Albright Clinic project repository! This is a React-based website providing compassionate and professional psychiatric and behavioral healthcare in Richmond, Texas.
 
 ## Project Overview
 
-- **Website**: [Health Plus](https://alkaison.github.io/Health-Plus/ "Health Plus")
+- **Website**: [Albright Clinic](https://johnleo8070.github.io/Albright-clinic/ "Albright Clinic")
 - **Framework**: React.js
+- **Repository**: [https://github.com/johnleo8070/Albright-clinic.git](https://github.com/johnleo8070/Albright-clinic.git)
 - **Deployment**: GitHub Pages
-- **Libraries**: React-Toastify, React Router DOM, FontAwesomeIcon
+- **Libraries**: framer-motion, FontAwesome, React Router DOM, React-Toastify
 
-## Features
+## Core Services
 
-- Easily schedule appointments with the specialists.
-- Engage in virtual consultations to receive expert medical advice.
-- Responsive UI design for seamless user experience across devices.
-- Utilizes React-Toastify for notifications, React Router DOM for page routing, and FontAwesomeIcon for icons.
-- Deployed using GitHub Pages for easy access and sharing.
+- **Psychiatric Evaluations**: Comprehensive assessments for accurate diagnosis.
+- **Medication Management**: Professional prescribing and monitoring of medications.
+- **Individual Therapy**: Personalized sessions for emotional healing and resilience.
+- **Behavioral Health**: Evidence-based interventions for behavioral change.
+- **Mental Health Treatment**: Holistic care for depression, anxiety, PTSD, and more.
 
-## Screenshots
+## Key Features
 
-### Hero Section
-
-![Health-Plus Image-1](https://i.postimg.cc/0Q4839KN/Health-Plus-Image1.png)
-
-### Information Section
-
-![Health-Plus Image-2](https://i.postimg.cc/zvRJY4TF/Health-Plus-Image2.png)
-
-### About Section
-
-![Health-Plus Image-3](https://i.postimg.cc/8zGrwbV0/Health-Plus-Image3.png)
-
-### Why Choose Health Plus?
-
-![Health-Plus Image-4](https://i.postimg.cc/fknMz5Kn/Health-Plus-Image4.png)
-
-### Reviews Section
-
-![Health-Plus Image-5](https://i.postimg.cc/xjkHdCRt/Health-Plus-Image5.png)
-
-### Doctors Section
-
-![Health-Plus Image-6](https://i.postimg.cc/8PM6h0xv/Health-Plus-Image6.png)
-
-### Footer Section
-
-![Health-Plus Image-7](https://i.postimg.cc/sftWGrHy/Health-Plus-Image7.png)
-
-### Legal Documents Page
-
-![Health-Plus Image-8](https://i.postimg.cc/FKskXszb/Health-Plus-Image8.png)
-
-### Appointment Form Page
-
-![Health-Plus Image-9](https://i.postimg.cc/2SxLtBk8/Health-Plus-Image9.png)
-
-## Deployment
-
-The website is deployed using GitHub Pages and can be accessed at [https://alkaison.github.io/Health-Plus/](https://alkaison.github.io/Health-Plus/).
+- **Interactive FAQ Section**: Detailed answers to common mental health questions with an accordion interface.
+- **Responsive Design**: Seamless experience across mobile, tablet, and desktop devices.
+- **Appointment Booking**: Easy online booking system for patients.
+- **Professional UI**: Premium and clean design using modern typography and smooth animations.
 
 ## Getting Started
 
 To run the project locally:
 
-1. Clone this repository: `git clone https://github.com/Alkaison/Health-Plus.git`
-2. Navigate to the project directory: `cd Health-Plus`
+1. Clone this repository: `git clone https://github.com/johnleo8070/Albright-clinic.git`
+2. Navigate to the project directory: `cd Albright-clinic`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
-5. Open your browser and visit: `http://localhost:3000/Health-Plus`
+5. Open your browser and visit: `http://localhost:3000/Albright-clinic`
 
-## Contributing
+## Deployment
 
-Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
+The website is configured to be deployed via GitHub Pages at [https://johnleo8070.github.io/Albright-clinic/](https://johnleo8070.github.io/Albright-clinic/).
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE "Project LICENSE").
+This project is licensed under the MIT License.
