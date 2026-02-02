@@ -54,7 +54,7 @@ function Footer() {
               <a href="tel:+17136240727">+1 (713) 624-0727</a>
             </li>
             <li>
-              <a href="https://maps.app.goo.gl/Rqoix49hrBepb4J77"><p style={{ margin: '5px 0', color: '#666' }}>20711 Slate CT, RICHMOND TX 77407</p></a>
+              <a href="https://maps.app.goo.gl/Rqoix49hrBepb4J77" style={{ margin: '5px 0', color: '#666', display: 'inline-block', textDecoration: 'none' }}>20711 Slate CT, RICHMOND TX 77407</a>
             </li>
             <li>
               <Link to="/contact">Contact Form</Link>
@@ -67,7 +67,7 @@ function Footer() {
         <p>© 2026 Albright Clinic. All rights reserved.</p>
         <br className="ft-mobile-break" />
         <a href="https://gstatmobile.com" target="_blank" rel="noopener noreferrer" className="ft-developer">
-          <p>Developed by GSTAT MOBILE SOLUTIONS</p>
+          Developed by GSTAT MOBILE SOLUTIONS
         </a>
 
 

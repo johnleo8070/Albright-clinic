@@ -6,11 +6,9 @@ import {
     faUserDoctor,
     faStethoscope,
     faHeartPulse,
-    faUserGroup,
     faShieldHalved,
     faCircleCheck,
     faLocationDot,
-    faHandSparkles,
     faInfoCircle,
     faPhone,
     faCalendarPlus
