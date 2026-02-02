@@ -14,7 +14,7 @@ import Psychiatry from "./Pages/Psychiatry";
 function App() {
   return (
     <div className="App">
-      <Router basename="/Health-Plus">
+      <Router>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
