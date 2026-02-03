@@ -100,7 +100,15 @@ function Contact() {
 
                             <div className="contact-detail-item">
                                 <h4>Location</h4>
-                                <p>20711 Slate CT, RICHMOND TX 77407</p>
+                                <p>
+                                    <a
+                                        href="https://maps.app.goo.gl/Rqoix49hrBepb4J77"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        20711 Slate CT, RICHMOND TX 77407
+                                    </a>
+                                </p>
                             </div>
 
                             <div className="contact-detail-item">
@@ -108,6 +116,19 @@ function Contact() {
                                 <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                                 <p>Evening & Weekend Appointments Available</p>
                             </div>
+                        </div>
+
+                        <div className="contact-map-container">
+                            <iframe
+                                title="Albright Clinic Location"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.430!2d-95.736!3d29.673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640df2775f0f353%3A0x600c000000000000!2s20711%20Slate%20Ct%2C%20Richmond%2C%20TX%2077407%2C%20USA!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+                                width="100%"
+                                height="300"
+                                style={{ border: 0, borderRadius: "12px" }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
                         </div>
                     </motion.div>
 

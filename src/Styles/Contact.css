@@ -144,6 +144,19 @@
   transform: translateY(0);
 }
 
+.contact-map-container {
+  margin-top: 40px;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.contact-map-container iframe {
+  display: block;
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
   .contact-container {
