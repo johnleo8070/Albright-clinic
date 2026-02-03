@@ -166,9 +166,53 @@
     align-items: flex-start;
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid #f0f0f0;
     height: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.home-service-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #1a8efd;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-out, height 0.5s ease-out, border-radius 0.3s ease-in 0.2s;
+    z-index: -1;
+}
+
+.home-service-card:hover::before {
+    width: 250%;
+    /* Larger to ensure coverage for wider cards */
+    height: 600px;
+    border-radius: 0;
+}
+
+.home-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(26, 142, 253, 0.2);
+    border-color: #1a8efd;
+}
+
+.home-service-icon,
+.home-service-card h3,
+.home-service-card p {
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.home-service-card:hover h3,
+.home-service-card:hover p,
+.home-service-card:hover .home-service-icon {
+    color: #ffffff;
 }
 
 .home-service-icon {
