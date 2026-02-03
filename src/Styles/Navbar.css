@@ -11,10 +11,21 @@
     color: #1A8EFD;
     letter-spacing: .6px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-title {
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    border-radius: 50%;
 }
 
 .navbar-sign {

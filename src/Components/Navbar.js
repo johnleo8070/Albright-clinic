@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/Navbar.css";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../Assets/albright-logo.jpg";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
@@ -18,7 +19,7 @@ function Navbar() {
     <div className="navbar-section">
       <h1 className="navbar-title">
         <Link to="/">
-          Albright Clinic
+          <img src={logo} alt="Albright Clinic Logo" className="navbar-logo" />
         </Link>
       </h1>
 
