@@ -50,42 +50,96 @@
 
 .info-cards {
     height: auto;
-    border: 2px solid #d7d3d3;
+    border: 2px solid #eef2f6;
     border-radius: 12px;
     background-color: white;
     position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    text-align: center;
+}
+
+.info-cards::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #1a8efd;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-out, height 0.5s ease-out, border-radius 0.3s ease-in 0.2s;
+    z-index: -1;
+}
+
+.info-cards:hover::before {
+    width: 250%;
+    height: 600px;
+    border-radius: 0;
+}
+
+.info-cards:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(26, 142, 253, 0.2);
+    border-color: #1a8efd;
 }
 
 .info-card-title {
-    margin: 32px 0 40px 0;
-    color: black;
+    margin: 20px 0 20px 0;
+    color: #0d4275;
     font-family: 'Poppins', sans-serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     letter-spacing: .8px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
 }
 
 .info-card-description {
-    margin: 24px;
+    margin: 20px 24px 30px 24px;
     color: rgb(77, 75, 75);
     font-family: 'Rubik', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: .8px;
     line-height: 1.5rem;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
 }
 
-.info-card-icon {
-    position: absolute;
-    top: -24px;
-    left: 44%;
-    padding: 10px;
+.info-cards:hover .info-card-title,
+.info-cards:hover .info-card-description {
+    color: #ffffff;
+}
+
+.info-card-icon-wrapper {
+    margin-top: 30px;
+    display: inline-flex;
+    padding: 15px;
     background-color: #DCE6FF;
-    border-radius: 30px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.info-cards:hover .info-card-icon-wrapper {
+    background-color: #ffffff;
 }
 
 .info-fa-icon {
-    color: #2C96FF;
-    font-size: 24px;
+    color: #1a8efd;
+    font-size: 28px;
+    transition: all 0.4s ease;
+}
+
+.info-cards:hover .info-fa-icon {
+    color: #1a8efd;
+    /* Keep icon blue, but wrapper turns white */
 }
 
 /* Responsive */
