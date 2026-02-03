@@ -101,6 +101,35 @@ const Chatbot = () => {
                     </button>
                 </div>
             );
+        } else if (queryWords.includes("phone") || queryWords.includes("call") || queryWords.includes("number") || (queryWords.includes("contact") && !queryWords.includes("form"))) {
+            botResponse = (
+                <div className="bot-contact-item">
+                    <p><strong>Phone Number:</strong><br />+1 (713) 624-0727</p>
+                    <p><strong>Email:</strong><br />bookings@albrightclinic.com</p>
+                    <button className="bot-action-btn" onClick={() => { setIsOpen(false); navigate("/contact"); }}>
+                        Go to Contact Page
+                    </button>
+                </div>
+            );
+        } else if (queryWords.includes("location") || queryWords.includes("address") || queryWords.includes("where") || queryWords.includes("find")) {
+            botResponse = (
+                <div className="bot-contact-item">
+                    <p><strong>Location:</strong><br />20711 Slate CT, RICHMOND TX 77407</p>
+                    <button className="bot-action-btn" onClick={() => { setIsOpen(false); navigate("/contact"); }}>
+                        View on Map / Contact Page
+                    </button>
+                </div>
+            );
+        } else if (queryWords.includes("email") || queryWords.includes("mail")) {
+            botResponse = (
+                <div className="bot-contact-item">
+                    <p><strong>Email:</strong><br />bookings@albrightclinic.com</p>
+                    <p><strong>Phone Number:</strong><br />+1 (713) 624-0727</p>
+                    <button className="bot-action-btn" onClick={() => { setIsOpen(false); navigate("/contact"); }}>
+                        Message Us Directly
+                    </button>
+                </div>
+            );
         } else {
             // Keyword-based priority matching
             const keywordMap = [
