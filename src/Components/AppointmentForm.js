@@ -5,7 +5,12 @@ import {
   faChevronRight,
   faChevronLeft,
   faCircleInfo,
-  faClock
+  faClock,
+  faCalendarAlt,
+  faCalendarDay,
+  faCalendarWeek,
+  faArrowLeft,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import logo from "../Assets/albright-logo.jpg";
@@ -15,7 +20,8 @@ const AppointmentForm = () => {
   const [step, setStep] = useState(1);
   const [visitMode, setVisitMode] = useState("In-person");
   const [patientType, setPatientType] = useState("New patient");
-  const [selectedDate, setSelectedDate] = useState("Feb 3");
+  const [currentWeekStart, setCurrentWeekStart] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
   // Form State
@@ -92,15 +98,62 @@ const AppointmentForm = () => {
     }
   };
 
-  const dates = [
-    { day: "TUE", date: "Feb 3" },
-    { day: "WED", date: "Feb 4" },
-    { day: "THU", date: "Feb 5" },
-    { day: "FRI", date: "Feb 6" },
-    { day: "SAT", date: "Feb 7" }
+  const timeSlots = [
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM"
   ];
 
-  const timeSlots = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "1:00 PM", "1:30 PM", "2:00 PM"];
+  // Generate dates for the current week
+  const getWeekDates = (startDate) => {
+    const dates = [];
+    const today = new Date();
+    
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(startDate);
+      date.setDate(date.getDate() + i);
+      
+      const isToday = date.toDateString() === today.toDateString();
+      const dayName = isToday ? 'Today' : date.toLocaleDateString('en-US', { weekday: 'short' });
+      
+      dates.push({
+        day: dayName,
+        date: date.getDate(),
+        month: date.toLocaleString('default', { month: 'short' }),
+        fullDate: date.toISOString().split('T')[0],
+        isToday: isToday
+      });
+    }
+    
+    return dates;
+  };
+  
+  const dates = getWeekDates(currentWeekStart);
+  
+  // Set initial selected date to today if not set
+  useEffect(() => {
+    if (!selectedDate) {
+      const today = new Date();
+      setSelectedDate(today.toISOString().split('T')[0]);
+    }
+  }, []);
+  
+  // Navigation functions
+  const goToPreviousWeek = () => {
+    const newDate = new Date(currentWeekStart);
+    newDate.setDate(newDate.getDate() - 7);
+    setCurrentWeekStart(newDate);
+  };
+
+  const goToNextWeek = () => {
+    const newDate = new Date(currentWeekStart);
+    newDate.setDate(newDate.getDate() + 7);
+    setCurrentWeekStart(newDate);
+  };
 
   return (
     <div className="appointment-form-section">
@@ -176,17 +229,40 @@ const AppointmentForm = () => {
 
               <div className="right-panel">
                 <div className="time-slots-container">
-                  <div className="date-carousel">
-                    {dates.map((d, i) => (
-                      <div
-                        key={i}
-                        className={`date-item ${selectedDate === d.date ? 'active' : ''}`}
-                        onClick={() => setSelectedDate(d.date)}
-                      >
-                        <span className="day-label">{d.day}</span>
-                        <span className="date-label">{d.date}</span>
+                  <div className="date-carousel-container">
+                    <div className="date-carousel-header">
+                      <h4>Select a Date</h4>
+                      <div className="week-navigation">
+                        <button className="nav-btn" onClick={goToPreviousWeek}>
+                          <FontAwesomeIcon icon={faChevronLeft} />
+                        </button>
+                        <span className="current-week">
+                          {dates[0].month} {dates[0].date} - {dates[6].month} {dates[6].date}
+                        </span>
+                        <button className="nav-btn" onClick={goToNextWeek}>
+                          <FontAwesomeIcon icon={faChevronRight} />
+                        </button>
                       </div>
-                    ))}
+                    </div>
+                    <div className="date-carousel">
+                      {dates.map((d, i) => (
+                        <div
+                          key={i}
+                          className={`date-item ${selectedDate === d.fullDate ? 'active' : ''} ${d.isToday ? 'today' : ''}`}
+                          onClick={() => setSelectedDate(d.fullDate)}
+                        >
+                          <div className="date-icon">
+                            {d.isToday ? (
+                              <FontAwesomeIcon icon={faCalendarDay} />
+                            ) : (
+                              <FontAwesomeIcon icon={faCalendarAlt} />
+                            )}
+                          </div>
+                          <span className="day-label">{d.day}</span>
+                          <span className="date-label">{d.date}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <div className="slots-grid">
                     {timeSlots.map((ts, i) => (

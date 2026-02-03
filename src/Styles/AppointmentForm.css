@@ -206,79 +206,228 @@
 
 /* Time Slots Grid */
 .time-slots-container {
-    background: #fcfcfc;
-    padding: 20px;
+    background: white;
+    padding: 0;
     border-radius: 12px;
-    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Date Carousel Container */
+.date-carousel-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.date-carousel-header {
+    padding: 15px 20px;
+    background: #f9fafc;
+    border-bottom: 1px solid #f0f2f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-carousel-header h4 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.week-navigation {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.current-week {
+    font-size: 13px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.nav-btn {
+    background: white;
+    border: 1px solid #e9ecef;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #495057;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: #f1f3f5;
+    color: #1A8EFD;
+    border-color: #dbe4ff;
 }
 
 .date-carousel {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
+    padding: 15px 10px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.date-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .date-item {
-    text-align: center;
-    padding: 10px;
+    min-width: 70px;
+    padding: 12px 8px;
+    margin: 0 4px;
+    border-radius: 10px;
     cursor: pointer;
-    flex: 1;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #f0f2f5;
+}
+
+.date-item:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .date-item.active {
-    border-bottom: 3px solid #1A8EFD;
+    background: #1A8EFD;
+    border-color: #1A8EFD;
+    color: white;
+}
+
+.date-item.active .day-label,
+.date-item.active .date-label {
+    color: white;
+}
+
+.date-item.today {
+    border: 1px dashed #1A8EFD;
+}
+
+.date-icon {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #adb5bd;
+}
+
+.date-item.active .date-icon {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .day-label {
-    display: block;
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6c757d;
     text-transform: uppercase;
-    color: #888;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
 }
 
 .date-label {
-    display: block;
+    font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: #2c3e50;
+    line-height: 1;
+}
+
+.date-item.active .date-label {
+    font-weight: 700;
 }
 
 .slots-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 20px;
 }
 
 .slot {
-    padding: 8px;
-    border: 1px solid #eee;
-    border-radius: 6px;
+    padding: 10px 8px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
     color: #1A8EFD;
     background: white;
-    transition: all 0.3s;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
 }
 
 .slot:hover {
     border-color: #1A8EFD;
+    background: #f8faff;
+    transform: translateY(-1px);
 }
 
 .slot.selected {
     background-color: #1A8EFD;
     color: white;
     border-color: #1A8EFD;
+    box-shadow: 0 4px 8px rgba(26, 142, 253, 0.2);
 }
 
 .more-slots {
-    grid-column: span 3;
+    grid-column: 1 / -1;
     text-align: center;
-    padding: 8px;
+    padding: 10px;
     color: #1A8EFD;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.more-slots:hover {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .date-carousel {
+        padding: 12px 8px;
+    }
+    
+    .date-item {
+        min-width: 60px;
+        padding: 10px 6px;
+    }
+    
+    .date-label {
+        font-size: 16px;
+    }
+    
+    .slots-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 15px;
+    }
+    
+    .slot {
+        padding: 8px 4px;
+        font-size: 12px;
+    }
 }
 
 /* Form Styles */
