@@ -5,7 +5,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
@@ -25,24 +25,24 @@ function Navbar() {
       {/* Desktop */}
       <ul className="navbar-items">
         <li>
-          <Link to="/" className="navbar-links">
+          <NavLink to="/" className="navbar-links">
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/services" className="navbar-links">
+          <NavLink to="/services" className="navbar-links">
             Services
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/about" className="navbar-links">
+          <NavLink to="/about" className="navbar-links">
             About
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/contact" className="navbar-links">
+          <NavLink to="/contact" className="navbar-links">
             Contact
-          </Link>
+          </NavLink>
         </li>
       </ul>
 
@@ -63,29 +63,29 @@ function Navbar() {
 
         <ul className="mobile-navbar-links">
           <li>
-            <Link onClick={openNav} to="/">
+            <NavLink onClick={openNav} to="/">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link onClick={openNav} to="/services">
+            <NavLink onClick={openNav} to="/services">
               Services
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link onClick={openNav} to="/about">
+            <NavLink onClick={openNav} to="/about">
               About
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link onClick={openNav} to="/contact">
+            <NavLink onClick={openNav} to="/contact">
               Contact
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link onClick={openNav} to="/appointment">
+            <NavLink onClick={openNav} to="/appointment">
               Book Appointment
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

@@ -42,10 +42,28 @@
     color: black;
     font-size: 18px;
     letter-spacing: .8px;
+    position: relative;
+    padding-bottom: 4px;
 }
 
 .navbar-links:hover {
-    color: #0cc2ea;
+    color: #1A8EFD;
+}
+
+.navbar-links.active {
+    color: #1A8EFD;
+    font-weight: 500;
+}
+
+.navbar-links.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #1A8EFD;
+    border-radius: 2px;
 }
 
 .navbar-btn-link {
