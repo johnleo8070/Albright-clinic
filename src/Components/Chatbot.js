@@ -69,9 +69,13 @@ const Chatbot = () => {
         setIsTyping(false);
         let botResponse = "";
 
+        // Clean query: remove punctuation and extra spaces
+        const cleanQuery = query.replace(/[^\w\s]/gi, '').toLowerCase().trim();
+        const queryWords = cleanQuery.split(/\s+/);
+
         // Greetings check
-        const greetings = ["hi", "hello", "good morning", "good afternoon", "good evening", "hey", "hola"];
-        const isGreeting = greetings.some(greet => query.includes(greet));
+        const greetings = ["hi", "hello", "good morning", "good afternoon", "good evening", "hey", "hola", "hi there", "greetings"];
+        const isGreeting = greetings.some(greet => cleanQuery === greet || cleanQuery.startsWith(greet + " "));
 
         if (isGreeting) {
             botResponse = (
@@ -81,7 +85,7 @@ const Chatbot = () => {
                     <div className="bot-booking-info">
                         <strong>To schedule an appointment or for inquiries, you can:</strong>
                         <ol>
-                            <li><strong>Book directly online</strong> by going to our appointment page.</li>
+                            <li><strong>Book directly online</strong> by using the appointment button on our website.</li>
                             <li><strong>Contact us directly:</strong>
                                 <br /> <FontAwesomeIcon icon={faPhone} /> Phone: +1 (713) 624-0727
                                 <br /> <FontAwesomeIcon icon={faEnvelope} /> Email: bookings@albrightclinic.com
@@ -98,14 +102,51 @@ const Chatbot = () => {
                 </div>
             );
         } else {
-            // FAQ matching
-            const matchingFaq = allFaqs.find(faq =>
-                query.includes(faq.question.toLowerCase()) ||
-                faq.question.toLowerCase().includes(query)
-            );
+            // Keyword-based priority matching
+            const keywordMap = [
+                { keywords: ["service", "offer", "provide", "treat"], faqIndex: 0 },
+                { keywords: ["condition", "treat", "help"], faqIndex: 1 },
+                { keywords: ["evaluation", "psychiatric", "assessment"], faqIndex: 2 },
+                { keywords: ["medication", "management", "prescription", "pills"], faqIndex: 3 },
+                { keywords: ["therapy", "counseling", "sessions"], faqIndex: 4 },
+                { keywords: ["appointment", "schedule", "book", "see", "visit"], faqIndex: 7 },
+                { keywords: ["new", "patient", "accepting"], faqIndex: 8 },
+                { keywords: ["location", "where", "address", "located", "richmond", "find"], faqIndex: 9 },
+                { keywords: ["first", "visit", "expect"], faqIndex: 10 },
+                { keywords: ["anxiety", "worry", "panic"], faqIndex: 11 },
+                { keywords: ["depression", "sad", "hopeless"], faqIndex: 15 },
+                { keywords: ["adhd", "focus", "attention"], faqIndex: 19 },
+                { keywords: ["ptsd", "trauma", "flashback"], faqIndex: 23 }
+            ];
 
-            if (matchingFaq) {
-                botResponse = matchingFaq.answer;
+            // 1. Try keyword map first for higher accuracy on intent
+            let bestMatch = null;
+            let highestCount = 0;
+
+            for (const item of keywordMap) {
+                const matchCount = item.keywords.filter(kw => queryWords.includes(kw)).length;
+                if (matchCount > highestCount) {
+                    highestCount = matchCount;
+                    bestMatch = allFaqs[item.faqIndex];
+                }
+            }
+
+            // 2. Fallback to basic word intersection if no keyword map hit
+            if (!bestMatch) {
+                for (const faq of allFaqs) {
+                    const faqClean = faq.question.replace(/[^\w\s]/gi, '').toLowerCase();
+                    const faqWords = faqClean.split(/\s+/);
+                    const intersection = queryWords.filter(word => faqWords.includes(word));
+
+                    if (intersection.length >= 2) { // At least 2 words must match
+                        bestMatch = faq;
+                        break;
+                    }
+                }
+            }
+
+            if (bestMatch) {
+                botResponse = bestMatch.answer;
             } else {
                 botResponse = "Apologies, I am not sure about that. Please contact our support team at +1 (713) 624-0727 for more information.";
             }
@@ -122,8 +163,18 @@ const Chatbot = () => {
     };
 
     const handleSuggestionClick = (question) => {
-        setInputValue(question);
-        // We could auto-send here too
+        setInputValue("");
+        const userMessage = {
+            id: messages.length + 1,
+            text: question,
+            sender: "user",
+            timestamp: new Date()
+        };
+        setMessages(prev => [...prev, userMessage]);
+        setIsTyping(true);
+        setTimeout(() => {
+            generateResponse(question.toLowerCase());
+        }, 1000);
     };
 
     const suggestions = [
