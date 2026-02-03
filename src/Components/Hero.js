@@ -1,7 +1,7 @@
 import React from "react";
 import Doctor from "../Assets/doctor-picture.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarCheck, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarCheck, faAngleUp, faCircleCheck, faClock } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../Styles/Hero.css";
@@ -82,24 +82,29 @@ function Hero() {
             <FontAwesomeIcon icon={faCalendarCheck} /> Book Appointment
           </motion.button>
           <motion.div
-            className="text-stats"
+            className="hero-benefits"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.7 }}
           >
-            <div className="text-stats-container">
-              <p>Compassionate</p>
-              <p>Care</p>
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" />
+              <p>Same-day appointments available</p>
             </div>
 
-            <div className="text-stats-container">
-              <p>Experienced</p>
-              <p>Experts</p>
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" />
+              <p>Modern facility with caring, experienced staff</p>
             </div>
 
-            <div className="text-stats-container">
-              <p>Personalized</p>
-              <p>Approach</p>
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" />
+              <p>Insurance accepted + transparent pricing</p>
+            </div>
+
+            <div className="benefit-item">
+              <FontAwesomeIcon icon={faClock} className="benefit-icon" />
+              <p>24/7 Support</p>
             </div>
           </motion.div>
         </motion.div>
