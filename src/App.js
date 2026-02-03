@@ -10,6 +10,7 @@ import Services from "./Pages/Services";
 import AboutUs from "./Pages/AboutUs";
 import Contact from "./Pages/Contact";
 import Psychiatry from "./Pages/Psychiatry";
+import Chatbot from "./Components/Chatbot";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/appointment" element={<Appointment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Chatbot />
       </Router>
     </div>
   );
