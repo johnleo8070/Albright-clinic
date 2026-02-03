@@ -23,7 +23,7 @@ const Chatbot = () => {
     const [messages, setMessages] = useState([
         {
             id: 1,
-            text: "Hi! I'm Val 🤖, how can I help you today?",
+            text: "Hi! I'm Alfie 🤖, how can I help you today?",
             sender: "bot",
             timestamp: new Date()
         }
@@ -216,7 +216,7 @@ const Chatbot = () => {
                                 </div>
                                 <div className="bot-name-status">
                                     <h4>Albright Support</h4>
-                                    <span>Online | Val 🤖</span>
+                                    <span>Online | Alfie 🤖</span>
                                 </div>
                             </div>
                             <button className="chat-close-btn" onClick={() => setIsOpen(false)}>
