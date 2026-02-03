@@ -59,6 +59,7 @@ transporter.verify((error, success) => {
 // Routes
 app.post("/api/appointment", async (req, res) => {
     const {
+        patientType,
         firstName,
         lastName,
         email,
@@ -70,7 +71,8 @@ app.post("/api/appointment", async (req, res) => {
         additionalNotes,
         hearAboutUs,
         appointmentTime,
-        preferredMode
+        preferredMode,
+        smsOptIn
     } = req.body;
 
     const mailOptions = {
@@ -80,6 +82,7 @@ app.post("/api/appointment", async (req, res) => {
         text: `
       New Appointment Request Details:
       
+      Patient Type: ${patientType}
       Patient Name: ${firstName} ${lastName}
       Email: ${email}
       Phone Number: ${patientNumber}
@@ -90,6 +93,7 @@ app.post("/api/appointment", async (req, res) => {
       Preferred Mode: ${preferredMode}
       Appointment Time: ${appointmentTime}
       How did they hear about us: ${hearAboutUs}
+      SMS Opt-In: ${smsOptIn ? "YES" : "NO"}
       
       Additional Notes:
       ${additionalNotes}

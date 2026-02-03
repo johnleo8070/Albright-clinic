@@ -29,7 +29,9 @@ const AppointmentForm = () => {
     sex: "Male",
     insuranceProvider: "Self-pay only (no insurance accepted)",
     additionalNotes: "",
-    hearAboutUs: ""
+    hearAboutUs: "",
+    termsAgreed: false,
+    smsOptIn: false
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,8 +41,11 @@ const AppointmentForm = () => {
   }, [step]);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
   };
 
   const handleNextStep = () => {
@@ -295,13 +300,26 @@ const AppointmentForm = () => {
 
               <div className="agreement-section">
                 <div className="checkbox-group">
-                  <input type="checkbox" id="terms" required />
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    name="termsAgreed"
+                    checked={formData.termsAgreed}
+                    onChange={handleInputChange}
+                    required
+                  />
                   <label htmlFor="terms">
                     I have read and agreed to the <Link to="/legal">Privacy Policy</Link> and <Link to="/legal">Terms of Use</Link> that I am at least 13 and have the authority to make this appointment.
                   </label>
                 </div>
                 <div className="checkbox-group">
-                  <input type="checkbox" id="sms" />
+                  <input
+                    type="checkbox"
+                    id="sms"
+                    name="smsOptIn"
+                    checked={formData.smsOptIn}
+                    onChange={handleInputChange}
+                  />
                   <label htmlFor="sms">
                     I agree to receive SMS alerts regarding appointments, care and coupons for Albright Clinic. Reply HELP for help and STOP to cancel. Message frequency varies. Message and Data rates may apply.
                   </label>
