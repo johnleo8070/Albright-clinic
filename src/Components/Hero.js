@@ -88,23 +88,23 @@ function Hero() {
             transition={{ delay: 1, duration: 0.7 }}
           >
             <div className="benefit-item">
-              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" style={{ color: '#1A8EFD' }} />
-              <p>Same-day appointments available</p>
+              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" style={{ color: '#000000' }} />
+              <p style={{ color: '#1A8EFD' }}>Same-day appointments available</p>
             </div>
 
             <div className="benefit-item">
-              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" style={{ color: '#1A8EFD' }} />
-              <p>Modern facility with caring, experienced staff</p>
+              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" style={{ color: '#000000' }} />
+              <p style={{ color: '#1A8EFD' }}>Modern facility with caring, experienced staff</p>
             </div>
 
             <div className="benefit-item">
-              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" style={{ color: '#1A8EFD' }} />
-              <p>Insurance accepted + transparent pricing</p>
+              <FontAwesomeIcon icon={faCircleCheck} className="benefit-icon" style={{ color: '#000000' }} />
+              <p style={{ color: '#1A8EFD' }}>Insurance accepted + transparent pricing</p>
             </div>
 
             <div className="benefit-item">
-              <FontAwesomeIcon icon={faClock} className="benefit-icon" style={{ color: '#1A8EFD' }} />
-              <p>24/7 Support</p>
+              <FontAwesomeIcon icon={faClock} className="benefit-icon" style={{ color: '#000000' }} />
+              <p style={{ color: '#1A8EFD' }}>24/7 Support</p>
             </div>
           </motion.div>
         </motion.div>
