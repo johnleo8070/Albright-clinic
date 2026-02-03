@@ -58,7 +58,20 @@ transporter.verify((error, success) => {
 
 // Routes
 app.post("/api/appointment", async (req, res) => {
-    const { patientName, patientNumber, patientGender, appointmentTime, preferredMode } = req.body;
+    const {
+        firstName,
+        lastName,
+        email,
+        patientNumber,
+        dob,
+        sex,
+        reasonForVisit,
+        insuranceProvider,
+        additionalNotes,
+        hearAboutUs,
+        appointmentTime,
+        preferredMode
+    } = req.body;
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
@@ -67,16 +80,24 @@ app.post("/api/appointment", async (req, res) => {
         text: `
       New Appointment Request Details:
       
-      Patient Name: ${patientName}
+      Patient Name: ${firstName} ${lastName}
+      Email: ${email}
       Phone Number: ${patientNumber}
-      Gender: ${patientGender}
-      Appointment Time: ${appointmentTime}
+      Date of Birth: ${dob}
+      Sex: ${sex}
+      Reason for Visit: ${reasonForVisit}
+      Insurance Provider: ${insuranceProvider}
       Preferred Mode: ${preferredMode}
+      Appointment Time: ${appointmentTime}
+      How did they hear about us: ${hearAboutUs}
+      
+      Additional Notes:
+      ${additionalNotes}
     `,
     };
 
     try {
-        console.log("Attempting to send appointment email for:", patientName);
+        console.log("Attempting to send appointment email for:", firstName, lastName);
         await transporter.sendMail(mailOptions);
         console.log("✅ Appointment email sent successfully");
         res.status(200).json({ message: "Appointment request sent successfully!" });

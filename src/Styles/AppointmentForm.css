@@ -1,89 +1,437 @@
-.form-container {
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    background: linear-gradient(to right, #ECF2FF, #FBFCFF);
-}
-.form-title {
+.appointment-form-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    font-size: 32px;
-    font-weight: bold;
 }
-.form-title > span {
+
+.form-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Progress Steps */
+.appointment-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
     position: relative;
+    padding: 0 40px;
 }
-.form-title span::before {
+
+.appointment-steps::before {
     content: '';
     position: absolute;
-    width: 75%;
-    height: 4px;
-    background-color: #9D2553;
+    top: 15px;
+    left: 80px;
+    right: 80px;
+    height: 2px;
+    background-color: #eee;
+    z-index: 1;
+}
+
+.step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #999;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #eee;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.step.active {
+    color: #333;
+}
+
+.step.active .step-number {
+    background-color: #1A8EFD;
+    color: white;
+}
+
+.step.completed .step-number {
+    background-color: #4cd137;
+    color: white;
+}
+
+.step-label {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Patient Type Selection */
+.patient-type-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.type-option {
+    border: 2px solid #eee;
+    padding: 15px;
     border-radius: 8px;
-    left: 0;
-    bottom: -12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
-/* Form */
-.form-content label {
-    margin: 0 0 16px 0;
+
+.type-option.selected {
+    border-color: #1A8EFD;
+    background-color: #f0f7ff;
+}
+
+.radio-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-option.selected .radio-circle {
+    border-color: #1A8EFD;
+}
+
+.radio-inner {
+    width: 10px;
+    height: 10px;
+    background-color: #1A8EFD;
+    border-radius: 50%;
+    display: none;
+}
+
+.type-option.selected .radio-inner {
     display: block;
-    font-family: 'Rubik', sans-serif;
-    font-size: 24px;
-    letter-spacing: .7px;
 }
-.form-content label::before {
-    content: "*";
-    color: red;
-    padding: 0 4px 0 0;
+
+/* Visit Mode Toggle */
+.visit-mode-toggle {
+    display: flex;
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    max-width: 400px;
 }
-.form-content label :is(input, select) {
-    width: 100%;
-    margin: 8px 0;
-    padding: 0 12px;
-    display: block;
-    height: 40px;
-    color: black;
-    border: 1px solid transparent;
+
+.mode-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
     border-radius: 6px;
-    background-color: #c9def4;
-    outline: transparent;
-    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.mode-btn.active {
+    background-color: white;
+    color: #1A8EFD;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Clinic Info Component */
+.clinic-info-bar {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.clinic-logo-small {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.clinic-details h4 {
+    margin: 0;
     font-size: 18px;
-    letter-spacing: .7px;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 700;
 }
-/* Success Message */
-.success-message {
-    margin: 20px 0 0 0;
-    color: green;
-    font-family: 'Rubik', sans-serif;
-    font-size: 22px;
-    letter-spacing: .7px;
-    line-height: 1.7rem;
+
+.clinic-details p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #666;
 }
-/* Error Message */
-.error-message {
-    color: red;
-    font-family: 'Rubik', sans-serif;
-    font-size: 16px;
-    letter-spacing: .7px;
-    line-height: 1.7rem;
+
+.timezone-info {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
+
+/* Grid Layout for Selection Step */
+.selection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+}
+
+/* Time Slots Grid */
+.time-slots-container {
+    background: #fcfcfc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+}
+
+.date-carousel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.date-item {
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.date-item.active {
+    border-bottom: 3px solid #1A8EFD;
+}
+
+.day-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.date-label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.slot {
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1A8EFD;
+    background: white;
+    transition: all 0.3s;
+}
+
+.slot:hover {
+    border-color: #1A8EFD;
+}
+
+.slot.selected {
+    background-color: #1A8EFD;
+    color: white;
+    border-color: #1A8EFD;
+}
+
+.more-slots {
+    grid-column: span 3;
+    text-align: center;
+    padding: 8px;
+    color: #1A8EFD;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Form Styles */
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fdfdfd;
+}
+
+.input-group textarea {
+    height: 120px;
+    resize: none;
+}
+
+.sex-selection {
+    display: flex;
+    gap: 15px;
+}
+
+.sex-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Agreement Checkboxes */
+.agreement-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.checkbox-group input {
+    margin-top: 4px;
+}
+
+.checkbox-group label {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.checkbox-group a {
+    color: #1A8EFD;
+    text-decoration: none;
+}
+
+/* Button Group */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.back-btn {
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.continue-btn {
+    padding: 12px 40px;
+    background-color: #ff8e6e;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.continue-btn:hover:not(:disabled) {
+    background-color: #ff7b54;
+}
+
+.continue-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 /* Responsive */
+@media screen and (max-width: 900px) {
+    .selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-steps {
+        padding: 0;
+    }
+
+    .appointment-steps::before {
+        left: 40px;
+        right: 40px;
+    }
+}
+
 @media screen and (max-width: 600px) {
+    .step-label {
+        display: none;
+    }
+
     .form-container {
-        padding: 24px;
+        padding: 20px;
     }
-    .form-title {
-        font-size: 24px;
-    }
-    .form-content label {
-        font-size: 18px;
-    }
-    .form-content label :is(input, select) {
-        font-size: 16px;
-    }
-    .success-message {
-        margin: 12px 0 0 0;
-        font-size: 18px;
+
+    .patient-type-selection {
+        grid-template-columns: 1fr;
     }
 }

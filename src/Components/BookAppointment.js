@@ -1,11 +1,11 @@
 import React from "react";
-import Doctor from "../Assets/doctor-book-appointment.png";
+import logo from "../Assets/albright-logo.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
   faCalendarCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Styles/BookAppointment.css";
 
 function BookAppointment() {
@@ -18,15 +18,15 @@ function BookAppointment() {
   return (
     <div className="ba-section">
       <div className="ba-image-content">
-        <img src={Doctor} alt="Doctor Group" className="ba-image1" />
+        <img src={logo} alt="Albright Clinic Logo" className="ba-image1" style={{ borderRadius: '50%' }} />
       </div>
 
       <div className="ba-text-content">
         <h3 className="ba-title">
-          <span>Why Choose Health</span>
+          <span>Why Choose Albright Clinic</span>
         </h3>
         <p className="ba-description">
-          Discover the reasons to choose Health Plus for your healthcare needs.
+          Discover the reasons to choose Albright Clinic for your healthcare needs.
           Experience expert care, convenience, and personalized solutions,
           making your well-being our top priority. Join us on a journey to
           better health and a happier life.
