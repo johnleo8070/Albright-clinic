@@ -82,13 +82,13 @@ function TermsOfService() {
         <p className="legal-description">
           If you have any questions about these Terms, please contact us at:
           <br /><br />
-          <strong>Email:</strong> info@albrightclinic.com<br />
-          <strong>Phone:</strong> (713) 624-0727<br />
-          <strong>Address:</strong> [Clinic Address], Richmond, TX
+          <strong>Email:</strong> bookings@albrightclinic.com<br />
+          <strong>Phone:</strong> +1 (713) 624-0727<br />
+          <strong>Address:</strong> 20711 Slate CT, RICHMOND TX 77407
         </p>
 
         <p className="legal-update">
-          <em>Last updated: February 2024</em>
+          <em>Last updated: February 2026</em>
         </p>
       </div>
     </div>
