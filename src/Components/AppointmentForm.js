@@ -41,6 +41,77 @@ const AppointmentForm = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load saved form data when component mounts
+  useEffect(() => {
+    const savedData = localStorage.getItem('appointmentFormData');
+    if (savedData) {
+      try {
+        const {
+          formData: savedFormData,
+          step: savedStep,
+          visitMode: savedVisitMode,
+          patientType: savedPatientType,
+          selectedDate: savedSelectedDate,
+          selectedTime: savedSelectedTime
+        } = JSON.parse(savedData);
+        
+        // Only update state if there's valid saved data
+        if (savedFormData) setFormData(savedFormData);
+        if (savedStep) setStep(savedStep);
+        if (savedVisitMode) setVisitMode(savedVisitMode);
+        if (savedPatientType) setPatientType(savedPatientType);
+        if (savedSelectedDate) setSelectedDate(savedSelectedDate);
+        if (savedSelectedTime) setSelectedTime(savedSelectedTime);
+      } catch (error) {
+        console.error('Error parsing saved form data:', error);
+        // Clear invalid data
+        localStorage.removeItem('appointmentFormData');
+      }
+    }
+  }, []);
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    // Don't save if we're in the middle of loading data
+    if (isSubmitting) return;
+    
+    const formState = {
+      formData,
+      step,
+      visitMode,
+      patientType,
+      selectedDate,
+      selectedTime
+    };
+    
+    localStorage.setItem('appointmentFormData', JSON.stringify(formState));
+  }, [formData, step, visitMode, patientType, selectedDate, selectedTime, isSubmitting]);
+  
+  // Clear form data after successful submission
+  const clearFormData = () => {
+    localStorage.removeItem('appointmentFormData');
+    setFormData({
+      reasonForVisit: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      patientNumber: "",
+      dob: "",
+      sex: "Male",
+      insuranceProvider: "Self-pay only (no insurance accepted)",
+      additionalNotes: "",
+      hearAboutUs: "",
+      termsAgreed: false,
+      smsOptIn: false
+    });
+    setStep(1);
+    setVisitMode("In-person");
+    setPatientType("New patient");
+    setSelectedDate("");
+    setSelectedTime("");
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -86,13 +157,16 @@ const AppointmentForm = () => {
 
       if (response.ok) {
         toast.success("Appointment request sent successfully!");
-        // Redirect or show success state
+        // Clear the form data after successful submission
+        clearFormData();
+        // Redirect to home page after a short delay
         setTimeout(() => window.location.href = "/", 3000);
       } else {
-        toast.error("Failed to send request. Please try again.");
+        throw new Error('Failed to submit form');
       }
     } catch (error) {
-      toast.error("Server error. Please try again later.");
+      console.error('Error submitting form:', error);
+      toast.error("Failed to send request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -160,19 +234,41 @@ const AppointmentForm = () => {
       <div className="form-container">
         <h2 className="form-title">Book an appointment</h2>
 
-        {/* Progress Steps */}
+        {/* Progress Steps with Navigation */}
         <div className="appointment-steps">
-          <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
-            <div className="step-number">{step > 1 ? "✓" : "1"}</div>
-            <span className="step-label">Appointment details</span>
-          </div>
-          <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
-            <div className="step-number">{step > 2 ? "✓" : "2"}</div>
-            <span className="step-label">Contact info</span>
-          </div>
-          <div className={`step ${step >= 3 ? 'active' : ''}`}>
-            <div className="step-number">3</div>
-            <span className="step-label">Insurance info</span>
+          <div className="step-navigation">
+            <button 
+              className={`nav-arrow prev ${step <= 1 ? 'disabled' : ''}`}
+              onClick={() => step > 1 && setStep(prev => prev - 1)}
+              disabled={step <= 1}
+              aria-label="Previous step"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            
+            <div className="steps-container">
+              <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
+                <div className="step-number">{step > 1 ? "✓" : "1"}</div>
+                <span className="step-label">Appointment details</span>
+              </div>
+              <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
+                <div className="step-number">{step > 2 ? "✓" : "2"}</div>
+                <span className="step-label">Contact info</span>
+              </div>
+              <div className={`step ${step >= 3 ? 'active' : ''}`}>
+                <div className="step-number">3</div>
+                <span className="step-label">Insurance info</span>
+              </div>
+            </div>
+            
+            <button 
+              className={`nav-arrow next ${step >= 3 ? 'disabled' : ''}`}
+              onClick={() => step < 3 && setStep(prev => prev + 1)}
+              disabled={step >= 3}
+              aria-label="Next step"
+            >
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
           </div>
         </div>
 
@@ -385,7 +481,7 @@ const AppointmentForm = () => {
                     required
                   />
                   <label htmlFor="terms">
-                    I have read and agreed to the <Link to="/legal">Privacy Policy</Link> and <Link to="/legal">Terms of Use</Link> that I am at least 13 and have the authority to make this appointment.
+                    I have read and agreed to the <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-of-service">Terms of Service</Link> that I am at least 13 and have the authority to make this appointment.
                   </label>
                 </div>
                 <div className="checkbox-group">

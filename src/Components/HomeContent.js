@@ -155,16 +155,13 @@ function HomeContent() {
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     {[
-                        "Depression treatment",
-                        "Anxiety disorder treatment",
-                        "Bipolar disorder management",
-                        "ADHD treatment",
+                        "Depression ",
+                        "Anxiety disorder ",
+                        "Bipolar disorder ",
+                        "ADHD ",
                         "PTSD & trauma-related disorders",
                         "Mood disorders",
-                        "Behavioral disorders",
-                        "Stress and adjustment disorders",
-                        "Sleep-related mental concerns",
-                        "Adult & Adolescent Psychiatry"
+                       
                     ].map((condition, index) => (
                         <motion.div key={index} variants={itemVariants} className="condition-card">
                             <div className="condition-check">

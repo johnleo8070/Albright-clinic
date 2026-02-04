@@ -10,6 +10,8 @@ import Services from "./Pages/Services";
 import AboutUs from "./Pages/AboutUs";
 import Contact from "./Pages/Contact";
 import Psychiatry from "./Pages/Psychiatry";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
+import TermsOfService from "./Components/TermsOfService";
 import Chatbot from "./Components/Chatbot";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/legal" element={<Legal />} />
           <Route path="/psychiatry" element={<Psychiatry />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Chatbot />
