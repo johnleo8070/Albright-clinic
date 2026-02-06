@@ -245,54 +245,125 @@
 
 .conditions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     width: 100%;
+}
+
+.condition-item {
+    height: 100%;
 }
 
 .condition-card {
     background: #ffffff;
-    padding: 20px 25px;
-    border-radius: 16px;
+    padding: 40px 30px;
+    border-radius: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    text-align: center;
     border: 1px solid #eef2f6;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: default;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Pulse and Fill Animation Effect */
+.condition-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: linear-gradient(135deg, #1a8efd 0%, #0d6efd 100%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-out, height 0.5s ease-out, border-radius 0.3s ease-in 0.2s;
+    z-index: -1;
+}
+
+.condition-card:hover::before {
+    width: 250%;
+    height: 600px;
+    border-radius: 0;
 }
 
 .condition-card:hover {
-    transform: translateY(-4px) scale(1.02);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(26, 142, 253, 0.25);
     border-color: #1a8efd;
-    box-shadow: 0 10px 15px -3px rgba(26, 142, 253, 0.1), 0 4px 6px -2px rgba(26, 142, 253, 0.05);
 }
 
-.condition-check {
-    width: 32px;
-    height: 32px;
-    background: #e7f3ff;
+/* Icon, Title, Description, Button - all above the animation */
+.condition-icon,
+.condition-card h3,
+.condition-card p,
+.condition-read-more {
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.condition-icon {
+    font-size: 42px;
     color: #1a8efd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
 }
 
-.condition-card:hover .condition-check {
-    background: #1a8efd;
+.condition-card:hover .condition-icon {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.condition-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0d4275;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.condition-card:hover h3 {
     color: #ffffff;
 }
 
-.condition-name {
+.condition-card p {
     font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.condition-card:hover p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.condition-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: #0d4275;
+    color: #ffffff;
+    border-radius: 25px;
+    font-size: 14px;
     font-weight: 500;
-    color: #334155;
-    line-height: 1.4;
+    transition: all 0.4s ease;
+}
+
+.condition-card:hover .condition-read-more {
+    background: #ffffff;
+    color: #1a8efd;
+    transform: scale(1.05);
 }
 
 /* Approach Section */
@@ -432,6 +503,28 @@
 
     .conditions-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .condition-card {
+        padding: 35px 25px;
+    }
+
+    .condition-icon {
+        font-size: 36px;
+    }
+
+    .condition-card h3 {
+        font-size: 20px;
+    }
+
+    .condition-card p {
+        font-size: 14px;
+    }
+
+    .condition-read-more {
+        font-size: 13px;
+        padding: 10px 24px;
     }
 
     .approach-text h2 {

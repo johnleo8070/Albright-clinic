@@ -11,7 +11,12 @@ import {
     faLocationDot,
     faInfoCircle,
     faPhone,
-    faCalendarPlus
+    faCalendarPlus,
+    faChartLine,
+    faCloudRain,
+    faBolt,
+    faShieldHeart,
+    faFaceSmile
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -155,19 +160,52 @@ function HomeContent() {
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     {[
-                        "Depression ",
-                        "Anxiety disorder ",
-                        "Bipolar disorder ",
-                        "ADHD ",
-                        "PTSD & trauma-related disorders",
-                        "Mood disorders",
-                       
+                        {
+                            name: "Depression",
+                            path: "/conditions/depression",
+                            icon: faCloudRain,
+                            description: "Professional support for managing major depressive disorder and related conditions with evidence-based treatment."
+                        },
+                        {
+                            name: "Anxiety Disorder",
+                            path: "/conditions/anxiety",
+                            icon: faHeartPulse,
+                            description: "Expert care for generalized anxiety, panic disorders, and phobias to help you regain control and peace of mind."
+                        },
+                        {
+                            name: "Bipolar Disorder",
+                            path: "/conditions/bipolar",
+                            icon: faChartLine,
+                            description: "Specialized treatment for managing mood swings and achieving emotional stability with comprehensive care plans."
+                        },
+                        {
+                            name: "ADHD",
+                            path: "/conditions/adhd",
+                            icon: faBolt,
+                            description: "Tailored approaches for attention, focus, and hyperactivity challenges in both children and adults."
+                        },
+                        {
+                            name: "PTSD & Trauma",
+                            path: "/conditions/ptsd",
+                            icon: faShieldHeart,
+                            description: "Compassionate trauma-informed care to support healing and recovery from traumatic experiences."
+                        },
+                        {
+                            name: "Mood Disorders",
+                            path: "/conditions/mood-disorders",
+                            icon: faFaceSmile,
+                            description: "Comprehensive treatment for various mood disorders affecting emotional regulation and daily functioning."
+                        },
                     ].map((condition, index) => (
-                        <motion.div key={index} variants={itemVariants} className="condition-card">
-                            <div className="condition-check">
-                                <FontAwesomeIcon icon={faCircleCheck} />
-                            </div>
-                            <span className="condition-name">{condition}</span>
+                        <motion.div key={index} variants={itemVariants} className="condition-item">
+                            <Link to={condition.path} className="condition-card">
+                                <FontAwesomeIcon icon={condition.icon} className="condition-icon" />
+                                <h3>{condition.name}</h3>
+                                <p>{condition.description}</p>
+                                <span className="condition-read-more">
+                                    Read More <FontAwesomeIcon icon={faCircleCheck} />
+                                </span>
+                            </Link>
                         </motion.div>
                     ))}
                 </motion.div>

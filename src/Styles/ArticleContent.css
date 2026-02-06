@@ -1,0 +1,345 @@
+/* Article Page Layout */
+.article-page {
+    background-color: #ffffff;
+}
+
+.article-section {
+    padding: 40px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Article Header */
+.article-header {
+    text-align: center;
+    margin: 64px 0 48px 0;
+}
+
+.article-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #0d4275;
+    position: relative;
+    display: inline-block;
+}
+
+.article-title::after {
+    content: '';
+    position: absolute;
+    width: 75%;
+    height: 4px;
+    background-color: #9D2553;
+    border-radius: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+}
+
+.article-intro {
+    margin: 32px auto;
+    max-width: 900px;
+    text-align: center;
+    color: rgb(77, 75, 75);
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    line-height: 1.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Article Content Sections */
+.article-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.article-content-section {
+    margin: 48px 0;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #0d4275;
+    margin-bottom: 24px;
+}
+
+.section-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a8efd;
+    margin: 32px 0 16px 0;
+}
+
+.section-text {
+    font-family: 'Rubik', sans-serif;
+    font-size: 17px;
+    line-height: 1.8rem;
+    color: rgb(77, 75, 75);
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+}
+
+.article-list {
+    margin: 24px 0;
+    padding-left: 24px;
+}
+
+.article-list li {
+    font-family: 'Rubik', sans-serif;
+    font-size: 17px;
+    line-height: 1.8rem;
+    color: rgb(77, 75, 75);
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+}
+
+.article-list li strong {
+    color: #0d4275;
+    font-weight: 600;
+}
+
+/* Image Placeholder */
+.article-image-placeholder {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #f5f7fa 0%, #eef2f6 100%);
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0;
+}
+
+.article-image-placeholder svg {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+
+.article-image-placeholder p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Actual Article Images */
+.article-image {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 40px auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Related Articles Section */
+.related-articles-section {
+    margin: 80px 0 40px 0;
+    padding-top: 60px;
+    border-top: 2px solid #eef2f6;
+}
+
+.related-articles-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #0d4275;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.related-articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.related-article-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #eef2f6;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.related-article-card:hover {
+    border-color: #1a8efd;
+    box-shadow: 0 4px 12px rgba(26, 142, 253, 0.15);
+    transform: translateY(-2px);
+}
+
+.related-article-thumbnail {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #DCE6FF 0%, #f0f5ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.related-article-card:hover .related-article-thumbnail {
+    background: linear-gradient(135deg, #1a8efd 0%, #0d6efd 100%);
+}
+
+.related-article-icon {
+    font-size: 32px;
+    color: #1a8efd;
+    transition: all 0.3s ease;
+}
+
+.related-article-card:hover .related-article-icon {
+    color: #ffffff;
+}
+
+.related-article-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-article-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0d4275;
+    margin: 0 0 8px 0;
+    transition: color 0.3s ease;
+}
+
+.related-article-card:hover .related-article-title {
+    color: #1a8efd;
+}
+
+.related-article-description {
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    line-height: 1.6rem;
+    color: rgb(77, 75, 75);
+    margin: 0 0 12px 0;
+    flex: 1;
+}
+
+.related-article-link {
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a8efd;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.related-article-link:hover {
+    color: #0d6efd;
+    gap: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .article-section {
+        padding: 24px 20px;
+    }
+
+    .article-header {
+        margin: 40px 0 32px 0;
+    }
+
+    .article-title {
+        font-size: 28px;
+    }
+
+    .article-intro {
+        font-size: 16px;
+        margin: 24px auto;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .section-subtitle {
+        font-size: 20px;
+    }
+
+    .section-text,
+    .article-list li {
+        font-size: 16px;
+        line-height: 1.6rem;
+    }
+
+    .article-image-placeholder {
+        height: 250px;
+        margin: 32px auto;
+    }
+
+    .article-image-placeholder svg {
+        font-size: 36px;
+    }
+
+    .article-image {
+        margin: 32px auto;
+        border-radius: 8px;
+    }
+
+    .related-articles-title {
+        font-size: 24px;
+    }
+
+    .related-article-card {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .related-article-thumbnail {
+        width: 100%;
+        height: 100px;
+    }
+
+    .related-article-icon {
+        font-size: 40px;
+    }
+
+    .related-article-title {
+        font-size: 18px;
+    }
+
+    .related-article-description {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .article-title {
+        font-size: 24px;
+    }
+
+    .article-intro {
+        font-size: 15px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+}

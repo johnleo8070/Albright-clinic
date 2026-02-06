@@ -13,6 +13,12 @@ import Psychiatry from "./Pages/Psychiatry";
 import PrivacyPolicy from "./Components/PrivacyPolicy";
 import TermsOfService from "./Components/TermsOfService";
 import Chatbot from "./Components/Chatbot";
+import Bipolar from "./Pages/Bipolar";
+import Depression from "./Pages/Depression";
+import Anxiety from "./Pages/Anxiety";
+import Adhd from "./Pages/Adhd";
+import Ptsd from "./Pages/Ptsd";
+import MoodDisorders from "./Pages/MoodDisorders";
 
 function App() {
   return (
@@ -29,6 +35,12 @@ function App() {
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/conditions/bipolar" element={<Bipolar />} />
+          <Route path="/conditions/depression" element={<Depression />} />
+          <Route path="/conditions/anxiety" element={<Anxiety />} />
+          <Route path="/conditions/adhd" element={<Adhd />} />
+          <Route path="/conditions/ptsd" element={<Ptsd />} />
+          <Route path="/conditions/mood-disorders" element={<MoodDisorders />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Chatbot />
