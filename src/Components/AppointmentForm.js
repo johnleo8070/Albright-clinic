@@ -56,7 +56,7 @@ const AppointmentForm = () => {
           selectedDate: savedSelectedDate,
           selectedTime: savedSelectedTime
         } = JSON.parse(savedData);
-        
+
         // Only update state if there's valid saved data
         if (savedFormData) setFormData(savedFormData);
         if (savedStep) setStep(savedStep);
@@ -76,7 +76,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     // Don't save if we're in the middle of loading data
     if (isSubmitting) return;
-    
+
     const formState = {
       formData,
       step,
@@ -85,10 +85,10 @@ const AppointmentForm = () => {
       selectedDate,
       selectedTime
     };
-    
+
     localStorage.setItem('appointmentFormData', JSON.stringify(formState));
   }, [formData, step, visitMode, patientType, selectedDate, selectedTime, isSubmitting]);
-  
+
   // Clear form data after successful submission
   const clearFormData = () => {
     localStorage.removeItem('appointmentFormData');
@@ -149,7 +149,7 @@ const AppointmentForm = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/appointment", {
+      const response = await fetch("https://m593zws0-5000.uks1.devtunnels.ms/api/appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -186,14 +186,14 @@ const AppointmentForm = () => {
   const getWeekDates = (startDate) => {
     const dates = [];
     const today = new Date();
-    
+
     for (let i = 0; i < 7; i++) {
       const date = new Date(startDate);
       date.setDate(date.getDate() + i);
-      
+
       const isToday = date.toDateString() === today.toDateString();
       const dayName = isToday ? 'Today' : date.toLocaleDateString('en-US', { weekday: 'short' });
-      
+
       dates.push({
         day: dayName,
         date: date.getDate(),
@@ -202,12 +202,12 @@ const AppointmentForm = () => {
         isToday: isToday
       });
     }
-    
+
     return dates;
   };
-  
+
   const dates = getWeekDates(currentWeekStart);
-  
+
   // Set initial selected date to today if not set
   useEffect(() => {
     if (!selectedDate) {
@@ -215,7 +215,7 @@ const AppointmentForm = () => {
       setSelectedDate(today.toISOString().split('T')[0]);
     }
   }, []);
-  
+
   // Navigation functions
   const goToPreviousWeek = () => {
     const newDate = new Date(currentWeekStart);
@@ -237,7 +237,7 @@ const AppointmentForm = () => {
         {/* Progress Steps with Navigation */}
         <div className="appointment-steps">
           <div className="step-navigation">
-            <button 
+            <button
               className={`nav-arrow prev ${step <= 1 ? 'disabled' : ''}`}
               onClick={() => step > 1 && setStep(prev => prev - 1)}
               disabled={step <= 1}
@@ -245,7 +245,7 @@ const AppointmentForm = () => {
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
-            
+
             <div className="steps-container">
               <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
                 <div className="step-number">{step > 1 ? "✓" : "1"}</div>
@@ -260,8 +260,8 @@ const AppointmentForm = () => {
                 <span className="step-label">Insurance info</span>
               </div>
             </div>
-            
-            <button 
+
+            <button
               className={`nav-arrow next ${step >= 3 ? 'disabled' : ''}`}
               onClick={() => step < 3 && setStep(prev => prev + 1)}
               disabled={step >= 3}

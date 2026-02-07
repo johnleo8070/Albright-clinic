@@ -34,7 +34,7 @@ function Contact() {
 
         // Send data to backend
         try {
-            const response = await fetch("http://localhost:5000/api/contact", {
+            const response = await fetch("https://m593zws0-5000.uks1.devtunnels.ms/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
