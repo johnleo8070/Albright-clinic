@@ -16,7 +16,7 @@ function SubscribeNewsletter() {
       if (emailRegex.test(inputEmail)) {
         setIsButtonDisabled(true);
         try {
-          const response = await fetch("https://m593zws0-5000.uks1.devtunnels.ms/api/newsletter", {
+          const response = await fetch("http://www.xnetnigeria.com/api/newsletter", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
