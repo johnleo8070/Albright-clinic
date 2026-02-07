@@ -162,6 +162,10 @@ app.get("/", (req, res) => {
     res.send("Albright Clinic Server is running!");
 });
 
+app.get("/api", (req, res) => {
+    res.send("Albright Clinic Server is running at /api!");
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
