@@ -34,7 +34,7 @@ function Contact() {
 
         // Send data to backend
         try {
-            const response = await fetch("http://www.xnetnigeria.com/api/contact", {
+            const response = await fetch("https://www.xnetnigeria.com/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
