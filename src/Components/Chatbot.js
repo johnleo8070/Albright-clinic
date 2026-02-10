@@ -245,7 +245,7 @@ const Chatbot = () => {
                                 </div>
                                 <div className="bot-name-status">
                                     <h4>Albright Support</h4>
-                                    <span>Online | Alfie 🤖</span>
+                                    <span>Online | FLVO 🤖</span>
                                 </div>
                             </div>
                             <button className="chat-close-btn" onClick={() => setIsOpen(false)}>
